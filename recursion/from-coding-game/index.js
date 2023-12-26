@@ -94,3 +94,29 @@ const totalIntegers = (arr) => {
 };
 
 // console.log(totalIntegers([[[5], 3], 2, ["foo"], [], [4, [5, 6]]]));
+
+const sumSquares = (arr) => {
+  let sum = 0;
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      sum += sumSquares(item);
+    }
+    if (typeof item === "number" && !isNaN(item)) {
+      sum += item * item;
+    }
+  }
+  return sum;
+};
+
+// console.log(sumSquares([10, [[10], 10], [10]]));
+// console.log(sumSquares([[[[[[[[[1]]]]]]]]]));
+
+const replicate = (n, num) => {
+  if (n <= 0) return [];
+
+  let arr = replicate(n - 1, num);
+  arr.push(num);
+  return arr;
+};
+
+// console.log(replicate(3, 5));
